@@ -1,6 +1,6 @@
+import 'package:Hotelino/core/theme/app_theme.dart';
 import 'package:Hotelino/core/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -25,15 +25,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'flutter app',
-      home: Scaffold(
-        appBar: AppBar(title: Text('Hotelino')),
-        body: Center(
-          child: Text('hello world', style: GoogleFonts.sail(fontSize: 30)),
-        ),
-      ),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeModeProvidr, child) {
+        return MaterialApp(
+          theme: themeModeProvidr.brightness ==Brightness.light ?
+          AppTheme.LightTheme : 
+          AppTheme.darkTheme,
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            appBar: AppBar(),
+            body: Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  themeModeProvidr.toggleTheme();
+                },
+                child: Text('Change Theme'),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
