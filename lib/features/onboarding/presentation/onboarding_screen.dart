@@ -36,7 +36,40 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
             ),
           ),
+          const SizedBox(height: 20),
+          buildPageIndicator(
+            onboardingProvider.currentIndex,
+            totalPge,
+            context,
+          ),
+          const SizedBox(height: 20),
         ],
+      ),
+    );
+  }
+
+  Widget buildPageIndicator(
+    int currentIndex,
+    int totalPages,
+    BuildContext context,
+  ) {
+    final theme = Theme.of(context);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(
+        totalPages,
+        (index) => AnimatedContainer(
+          duration: const Duration(microseconds: 300),
+          margin: const EdgeInsets.symmetric(horizontal: 5),
+          width: currentIndex == index ? 12 : 8,
+          height: currentIndex == index ? 12 : 8,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: currentIndex == index
+                ? theme.colorScheme.primary
+                : theme.colorScheme.primary.withAlpha(30),
+          ),
+        ),
       ),
     );
   }
