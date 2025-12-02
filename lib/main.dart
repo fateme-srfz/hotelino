@@ -1,6 +1,7 @@
 import 'package:Hotelino/bootstrap.dart';
 import 'package:Hotelino/core/theme/app_theme.dart';
 import 'package:Hotelino/core/theme/theme_provider.dart';
+import 'package:Hotelino/routes/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
@@ -63,21 +64,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     return Consumer<ThemeProvider>(
       builder: (context, themeModeProvidr, child) {
         return MaterialApp(
+          title: 'Hotelino',
           theme: themeModeProvidr.brightness == Brightness.light
               ? AppTheme.LightTheme
               : AppTheme.darkTheme,
           debugShowCheckedModeBanner: false,
-          home: Scaffold(
-            appBar: AppBar(),
-            body: Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  themeModeProvidr.toggleTheme();
-                },
-                child: Text('Change Theme'),
-              ),
-            ),
-          ),
+          routes: AppRoute.routes,
+          initialRoute: AppRoute.onboarding,
         );
       },
     );
