@@ -33,6 +33,7 @@ class OnboardingButton extends StatelessWidget {
                 ),
               ),
               child: FloatingActionButton(
+                key: ValueKey(icon),
                 elevation: 0,
                 onPressed: onPressed,
                 backgroundColor: backgroundColor,
