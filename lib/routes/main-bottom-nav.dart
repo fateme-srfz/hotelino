@@ -1,3 +1,4 @@
+import 'package:Hotelino/core/constants/constants.dart';
 import 'package:Hotelino/routes/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,13 +28,77 @@ class _MainBottomNavState extends State<MainBottomNav> {
   List<PersistentBottomNavBarItem> _navBarItems() {
     return [
       PersistentBottomNavBarItem(
-      icon: SvgPicture.asset(
-        "assets/images/nav_home.svg",
-        width: 20,
-        height: 20,
-        colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+        icon: SvgPicture.asset(
+          "assets/images/nav_home.svg",
+          width: 20,
+          height: 20,
+          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
         ),
-    ),
+
+        activeColorPrimary: AppColors.primary,
+        inactiveIcon: SvgPicture.asset(
+          'assets/images/nav_home.svg',
+          width: 20,
+          height: 20,
+          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+        ),
+      ),
+
+
+      PersistentBottomNavBarItem(
+        icon: SvgPicture.asset(
+          'assets/images/nav_favorite.svg',
+          width: 20,
+          height: 20,
+          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+        ),
+
+        activeColorPrimary: AppColors.primary,
+        inactiveIcon: SvgPicture.asset(
+          'assets/images/nav_favorite.svg',
+          width: 20,
+          height: 20,
+          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+        ),
+      ),
+
+
+      PersistentBottomNavBarItem(
+        icon: SvgPicture.asset(
+          'assets/images/nav_booking.svg',
+          width: 20,
+          height: 20,
+          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+        ),
+
+        activeColorPrimary: AppColors.primary,
+        inactiveIcon: SvgPicture.asset(
+          'assets/images/nav_booking.svg',
+          width: 20,
+          height: 20,
+          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+        ),
+      ),
+
+
+      PersistentBottomNavBarItem(
+        icon: SvgPicture.asset(
+          'assets/images/nav_profile.svg',
+          width: 20,
+          height: 20,
+          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+        ),
+        
+        activeColorPrimary: AppColors.primary,
+        inactiveIcon: SvgPicture.asset(
+          'assets/images/nav_profile.svg',
+          width: 20,
+          height: 20,
+          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+        ),
+      ),
+
+
     ];
   }
 
@@ -41,9 +106,11 @@ class _MainBottomNavState extends State<MainBottomNav> {
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
-      screens: [],
+      screens: _buildscreens(),
+      items: _navBarItems(),
       controller: _controller,
       onItemSelected: (value) {},
+      backgroundColor: Theme.of(context).colorScheme.surface,
     );
   }
 }
