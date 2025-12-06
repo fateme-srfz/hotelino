@@ -44,7 +44,6 @@ class _MainBottomNavState extends State<MainBottomNav> {
         ),
       ),
 
-
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
           'assets/images/nav_favorite.svg',
@@ -61,7 +60,6 @@ class _MainBottomNavState extends State<MainBottomNav> {
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
         ),
       ),
-
 
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
@@ -80,7 +78,6 @@ class _MainBottomNavState extends State<MainBottomNav> {
         ),
       ),
 
-
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
           'assets/images/nav_profile.svg',
@@ -88,7 +85,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
           height: 20,
           colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
         ),
-        
+
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
           'assets/images/nav_profile.svg',
@@ -97,8 +94,6 @@ class _MainBottomNavState extends State<MainBottomNav> {
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
         ),
       ),
-
-
     ];
   }
 
@@ -111,6 +106,17 @@ class _MainBottomNavState extends State<MainBottomNav> {
       controller: _controller,
       onItemSelected: (value) {},
       backgroundColor: Theme.of(context).colorScheme.surface,
+      navBarStyle: NavBarStyle.style7,
+      hideNavigationBarWhenKeyboardAppears: true,
+      stateManagement: true,
+      handleAndroidBackButtonPress: true,
+      confineToSafeArea: true,
+      animationSettings: NavBarAnimationSettings(
+        navBarItemAnimation: ItemAnimationSettings(
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
+      ),
     );
   }
 }
