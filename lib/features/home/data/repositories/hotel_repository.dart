@@ -6,14 +6,13 @@ class HotelRepository {
 
   HotelRepository({required this.jsonDataService});
 
-  Future<List<Hotel>> fetchHotel() async {
-    return jsonDataService.loadData();
+  Future<List<Hotel>> fetchHotels() async {
+    return jsonDataService.loadHotels();
   }
 
   Future<Hotel> getHotelById(String id) {
-    return jsonDataService.loadData().then((hotels) {
-      return hotels.firstWhere(
-        (hotel) => hotel.id == id);
+    return jsonDataService.loadHotels().then((hotels) {
+      return hotels.firstWhere((hotel) => hotel.id == id);
     });
   }
 }

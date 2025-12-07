@@ -5,7 +5,7 @@ import 'package:Hotelino/features/home/data/models/hotel.dart';
 import 'package:flutter/services.dart';
 
 class JsonDataService {
-  Future<List<Hotel>> loadData() async {
+  Future<List<Hotel>> loadHotels() async {
     final String response = await rootBundle.loadString(
       AppConstants.hotelsData,
     );
