@@ -1,15 +1,5 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
-
-
 class FavoritePage extends StatelessWidget {
   const FavoritePage({super.key});
 
@@ -19,7 +9,6 @@ class FavoritePage extends StatelessWidget {
   }
 }
 
-
 class BookinPage extends StatelessWidget {
   const BookinPage({super.key});
 
@@ -28,7 +17,6 @@ class BookinPage extends StatelessWidget {
     return Scaffold();
   }
 }
-
 
 class ProfliePage extends StatelessWidget {
   const ProfliePage({super.key});

@@ -17,7 +17,7 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await lazyBootStrap();
   FlutterNativeSplash.remove();
-
+ 
   final hotelRepository = HotelRepository(jsonDataService: JsonDataService());
 
   runApp(

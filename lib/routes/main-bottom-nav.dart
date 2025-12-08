@@ -1,4 +1,5 @@
 import 'package:Hotelino/core/constants/constants.dart';
+import 'package:Hotelino/features/home/home_screen.dart';
 import 'package:Hotelino/routes/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,7 +23,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
   }
 
   _buildscreens() {
-    return [HomePage(), FavoritePage(), BookinPage(), ProfliePage()];
+    return [HomeScreen(), FavoritePage(), BookinPage(), ProfliePage()];
   }
 
   List<PersistentBottomNavBarItem> _navBarItems() {
