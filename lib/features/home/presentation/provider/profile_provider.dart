@@ -10,7 +10,7 @@ class ProfileProvider extends ChangeNotifier {
 
   Profile? _profile;
   Profile? get profile => _profile;
-  
+
   List<Hotel> _hotels = [];
 
   ProfileProvider(this._profileRepository, this._hotelRepository) {
@@ -24,6 +24,7 @@ class ProfileProvider extends ChangeNotifier {
 
   loadUserProfile() async {
     _profile = await _profileRepository.fetchUserProfile();
+    notifyListeners();
   }
 
   //recently Viewed Hotels - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
