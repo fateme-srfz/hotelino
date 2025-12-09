@@ -1,4 +1,5 @@
 import 'package:Hotelino/features/home/presentation/provider/home_provider.dart';
+import 'package:Hotelino/features/home/presentation/widgets/ad_banner.dart';
 import 'package:Hotelino/features/home/presentation/widgets/home_appbar.dart';
 import 'package:Hotelino/features/home/presentation/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,8 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 16,),
             SearchBarWidget(),
             const SizedBox(height: 16,),
-            
+            AdBannerWidget(),
+
 
           ],
         ),
