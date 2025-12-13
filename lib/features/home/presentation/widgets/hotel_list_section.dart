@@ -1,4 +1,5 @@
 import 'package:Hotelino/features/home/data/models/hotel.dart';
+import 'package:Hotelino/features/home/presentation/widgets/hotel_card.dart';
 import 'package:flutter/material.dart';
 
 class HotelListSection extends StatelessWidget {
@@ -33,6 +34,22 @@ class HotelListSection extends StatelessWidget {
               ),
               Text(title, style: theme.textTheme.displayMedium),
             ],
+          ),
+        ),
+        SizedBox(
+          height: 360,
+          child: ListView.builder(
+            padding: const EdgeInsets.only(right: 16),
+            reverse: true,
+            scrollDirection: Axis.horizontal,
+            clipBehavior: Clip.none,
+            itemCount: hotelsList.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: HotelCard(hotel: hotelsList[index]),
+              );
+            },
           ),
         ),
       ],
