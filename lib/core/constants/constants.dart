@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class AppConstants {
   static const String baseUrlImage =
-      "http://dunijet.ir/content/projects/hotelino/";
+      "http://old.dunijet.ir/content/projects/hotelino/";
   static const String hotelsData = "assets/data/hotels.json";
 }
 
@@ -35,11 +35,11 @@ class HomePageDataConstants {
   static const List<String> _newestHotelIds = ["8", "9", "10"];
 
   static HomepageData get homePageData => HomepageData(
-    favorites : _favoriteHotelIds ,
-    discounted :_discountedHotelIds, 
-    recentlyViewed: _recentlyViewedIds, 
+    favorites: _favoriteHotelIds,
+    discounted: _discountedHotelIds,
+    recentlyViewed: _recentlyViewedIds,
     popular: _popularHotelIds,
-    specialOffers: _specialOfferIds, 
+    specialOffers: _specialOfferIds,
     newest: _newestHotelIds,
   );
 }
