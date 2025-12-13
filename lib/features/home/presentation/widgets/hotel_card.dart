@@ -31,7 +31,9 @@ class HotelCard extends StatelessWidget {
                 child: Image.network(
                  networkUrl(hotel.images[0]),
                   width: double.infinity,
-                  height: 200,),
+                  height: 200,
+                  fit: BoxFit.cover,
+                  ),
 
                )
             ],),
