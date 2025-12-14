@@ -15,6 +15,7 @@ class HotelVerticalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -29,7 +30,10 @@ class HotelVerticalList extends StatelessWidget {
           itemCount: hotels.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(
+                vertical: 8.0,
+                horizontal: 16.0,
+              ),
               child: HotelCardVertical(hotel: hotels[index]),
             );
           },
