@@ -43,8 +43,13 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             const SizedBox(height: 16),
-            
-
+            Consumer<HomeProvider>(
+              builder: (context, homeProvider, child) {
+                return StoryCarousel(
+                  images: homeProvider.getStoryImages(), 
+                  titles: homeProvider.storyTitles);
+              },
+            ),
           ],
         ),
       ),
