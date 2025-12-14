@@ -31,6 +31,18 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
+
+            Consumer<HomeProvider>(
+              builder: (context, homeProvider, child) {
+                return HotelListSection(
+                  title: "پیشنهاد ویژه امروز",
+                  hotelsList: homeProvider.getSpecialOffersHotels(),
+                  onSeeAllPressed: () {},
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+
           ],
         ),
       ),
