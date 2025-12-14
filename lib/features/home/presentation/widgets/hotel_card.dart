@@ -2,6 +2,7 @@ import 'package:Hotelino/core/utils/network.dart';
 import 'package:Hotelino/core/utils/price_formatter.dart';
 import 'package:Hotelino/features/home/data/models/hotel.dart';
 import 'package:Hotelino/features/home/presentation/provider/favorite_item_provider.dart';
+import 'package:Hotelino/features/home/presentation/widgets/animated_favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,21 +23,32 @@ class HotelCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Stack(children: [
-               ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  topRight: Radius.circular(16)
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
                   ),
-                child: Image.network(
-                 networkUrl(hotel.images[0]),
-                  width: double.infinity,
-                  height: 200,
-                  fit: BoxFit.cover,
+                  child: Image.network(
+                    networkUrl(hotel.images[0]),
+                    width: double.infinity,
+                    height: 200,
+                    fit: BoxFit.cover,
                   ),
-
-               )
-            ],),
+                ),
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: AnimatedFavoriteButton(
+                    isFavorite: isFavorite,
+                    onTap: () {
+                      favoriteProvider.toggleFavoriteHotels(hotel.id);
+                    },
+                  ),
+                ),
+              ],
+            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -83,28 +95,29 @@ class HotelCard extends StatelessWidget {
                   const SizedBox(height: 8),
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0),
-                    child: Text("از  ${formatPrice(hotel.pricePerNight)} / شب ",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold
-                    ),),
+                    child: Text(
+                      "از  ${formatPrice(hotel.pricePerNight)} / شب ",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Padding(
-                    padding: const EdgeInsets.only(right: 8,left: 8),
+                    padding: const EdgeInsets.only(right: 8, left: 8),
                     child: SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: (){}, 
-                        child: Text('مشاهده و انتخاب اتاق',
-                        style: TextStyle(
-                          color: Colors.white
+                        onPressed: () {},
+                        child: Text(
+                          'مشاهده و انتخاب اتاق',
+                          style: TextStyle(color: Colors.white),
                         ),
-                        )
-                        ),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 8,)
+                  const SizedBox(height: 8),
                 ],
               ),
             ),
