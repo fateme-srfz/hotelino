@@ -70,12 +70,12 @@ class AnimatedFavoriteButtonState extends State<AnimatedFavoriteButton>
               return Transform.scale(
                 scale: _scaleAnimation.value,
                 child: CircleAvatar(
-                backgroundColor: Colors.white60.withValues(alpha: 10),
-                child: Icon(
-                  Icons.favorite_rounded,
-                  color: widget.isFavorite ? Colors.red : Colors.white,
+                  backgroundColor: Colors.white60.withValues(alpha: 0.1),
+                  child: Icon(
+                    Icons.favorite_rounded,
+                    color: widget.isFavorite ? Colors.red : Colors.white,
+                  ),
                 ),
-              ),
               );
             },
           ),
