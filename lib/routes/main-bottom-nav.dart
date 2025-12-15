@@ -1,4 +1,5 @@
 import 'package:Hotelino/core/constants/constants.dart';
+import 'package:Hotelino/features/booking/presentation/booking_screen.dart';
 import 'package:Hotelino/features/favorite/presentation/favorite_screen.dart';
 import 'package:Hotelino/features/home/presentation/home_screen.dart';
 import 'package:Hotelino/routes/test.dart';
@@ -24,7 +25,11 @@ class _MainBottomNavState extends State<MainBottomNav> {
   }
 
   _buildscreens() {
-    return [HomeScreen(), FavoriteScreen(), BookinPage(), ProfliePage()];
+    return [
+      const HomeScreen(), 
+      const FavoriteScreen(), 
+      const BookingScreen(), 
+      const ProfliePage()];
   }
 
   List<PersistentBottomNavBarItem> _navBarItems() {
