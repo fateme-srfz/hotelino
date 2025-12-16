@@ -35,10 +35,13 @@ class _BookingScreenState extends State<BookingScreen> {
           physics: const BouncingScrollPhysics(),
           child: Consumer<BookingProvider>(
             builder: (context, bookingProvider, child) {
-              return Form(child: 
-              Column(
-                children: [
-                  
+              return Form(
+                key: _formKey,
+                child: 
+                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
                 ],
               ));
             },
