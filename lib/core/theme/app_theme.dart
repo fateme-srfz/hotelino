@@ -102,6 +102,9 @@ class AppTheme {
         primaryFixed: AppColors.primary,
         surfaceContainerLow: Colors.grey[200],
       ),
+      inputDecorationTheme: baseLight.inputDecorationTheme.copyWith(
+        fillColor: baseLight.colorScheme.surface,
+      ),
     );
   }
 
@@ -113,7 +116,7 @@ class AppTheme {
       brightness: Brightness.dark,
       fontFamily: 'sahel',
       colorSchemeSeed: AppColors.primary,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         elevation: 0,
         titleTextStyle: TextStyle(
           fontSize: 16,
@@ -121,7 +124,7 @@ class AppTheme {
           fontWeight: FontWeight.w500,
         ),
       ),
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
         //onboarding screen
         displayLarge: TextStyle(
           fontSize: 24,
@@ -188,18 +191,21 @@ class AppTheme {
             color: AppColors.darkFocusedBorder,
           ),
         ),
-        hintStyle: TextStyle(fontSize: 14, color: AppColors.darkHint),
-        labelStyle: TextStyle(
+        hintStyle: const TextStyle(fontSize: 14, color: AppColors.darkHint),
+        labelStyle: const TextStyle(
           fontWeight: FontWeight.bold,
           color: AppColors.darkText,
         ),
       ),
     );
     return baseDark.copyWith(
-        colorScheme: baseDark.colorScheme.copyWith(
-            primaryFixed: AppColors.primary,
-            outline: Colors.grey[500]
-            )
+      colorScheme: baseDark.colorScheme.copyWith(
+        primaryFixed: AppColors.primary,
+        outline: Colors.grey[500],
+      ),
+      inputDecorationTheme: baseDark.inputDecorationTheme.copyWith(
+        fillColor: baseDark.colorScheme.surface,
+      ),
     );
   }
 }

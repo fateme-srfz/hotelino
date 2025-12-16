@@ -6,7 +6,7 @@ class BookingProvider with ChangeNotifier {
   final BookingModel _booking = BookingModel();
   BookingModel get booking => _booking;
 
-  void setNAme(String value) {
+  void setName(String value) {
     _booking.fullName = value;
     notifyListeners();
   }
