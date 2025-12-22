@@ -89,9 +89,27 @@ class _BookingScreenState extends State<BookingScreen> {
                         return null;
                       },
                       onSaved: (newValue) {
-                       if(newValue!=null){
-                         bookingProvider.setRangeDate(newValue); 
-                       }
+                        if (newValue != null) {
+                          bookingProvider.setRangeDate(newValue);
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 8),
+                    BookingFormField(
+                      title: 'تعداد نفرات',
+                      hint: 'تعداد نفرات خود را وارد کنید...',
+                      initialValue: bookingProvider.booking.numberOfGuests,
+                      keyboardType: TextInputType.number,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "لطفا تعداد نفرات را وارد کنید";
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) {
+                        if (newValue != null) {
+                          bookingProvider.setNumberOfGuests(newValue);
+                        }
                       },
                     ),
                     const SizedBox(height: 8),
