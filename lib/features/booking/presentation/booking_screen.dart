@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BookingScreen extends StatefulWidget {
-  const BookingScreen({super.key});
+  static final GlobalKey<_BookingScreenState> bookingScreenKey = GlobalKey<_BookingScreenState>();
+  BookingScreen({Key? key}):super(key: bookingScreenKey);
 
   @override
   State<BookingScreen> createState() => _BookingScreenState();

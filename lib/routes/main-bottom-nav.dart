@@ -1,4 +1,5 @@
 import 'package:Hotelino/core/constants/constants.dart';
+import 'package:Hotelino/core/utils/keyboard.dart';
 import 'package:Hotelino/features/booking/presentation/booking_screen.dart';
 import 'package:Hotelino/features/favorite/presentation/favorite_screen.dart';
 import 'package:Hotelino/features/home/presentation/home_screen.dart';
@@ -28,7 +29,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
     return [
       const HomeScreen(), 
       const FavoriteScreen(), 
-      const BookingScreen(), 
+      BookingScreen(), 
       const ProfliePage()];
   }
 
@@ -39,7 +40,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
           "assets/images/nav_home.svg",
           width: 20,
           height: 20,
-          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+          colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
         ),
 
         activeColorPrimary: AppColors.primary,
@@ -47,7 +48,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
           'assets/images/nav_home.svg',
           width: 20,
           height: 20,
-          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+          colorFilter: const ColorFilter.mode(Colors.grey, BlendMode.srcIn),
         ),
       ),
 
@@ -56,7 +57,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
           'assets/images/nav_favorite.svg',
           width: 20,
           height: 20,
-          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+          colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
         ),
 
         activeColorPrimary: AppColors.primary,
@@ -64,7 +65,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
           'assets/images/nav_favorite.svg',
           width: 20,
           height: 20,
-          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+          colorFilter: const ColorFilter.mode(Colors.grey, BlendMode.srcIn),
         ),
       ),
 
@@ -73,7 +74,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
           'assets/images/nav_booking.svg',
           width: 20,
           height: 20,
-          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+          colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
         ),
 
         activeColorPrimary: AppColors.primary,
@@ -81,7 +82,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
           'assets/images/nav_booking.svg',
           width: 20,
           height: 20,
-          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+          colorFilter: const ColorFilter.mode(Colors.grey, BlendMode.srcIn),
         ),
       ),
 
@@ -90,7 +91,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
           'assets/images/nav_profile.svg',
           width: 20,
           height: 20,
-          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+          colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
         ),
 
         activeColorPrimary: AppColors.primary,
@@ -98,7 +99,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
           'assets/images/nav_profile.svg',
           width: 20,
           height: 20,
-          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
+          colorFilter: const ColorFilter.mode(Colors.grey, BlendMode.srcIn),
         ),
       ),
     ];
@@ -111,14 +112,23 @@ class _MainBottomNavState extends State<MainBottomNav> {
       screens: _buildscreens(),
       items: _navBarItems(),
       controller: _controller,
-      onItemSelected: (value) {},
+
+      onItemSelected: (index) {
+        if (index != 2) {
+          // print('✅we left booking page');
+          //reset form on booking screen
+          BookingScreen.bookingScreenKey.currentState?.resetForm();
+        }
+        unfocusEditors(context);
+      },
+
       backgroundColor: Theme.of(context).colorScheme.surface,
       navBarStyle: NavBarStyle.style7,
       hideNavigationBarWhenKeyboardAppears: true,
       stateManagement: true,
       handleAndroidBackButtonPress: true,
       confineToSafeArea: true,
-      animationSettings: NavBarAnimationSettings(
+      animationSettings: const NavBarAnimationSettings(
         navBarItemAnimation: ItemAnimationSettings(
           duration: Duration(milliseconds: 200),
           curve: Curves.ease,
