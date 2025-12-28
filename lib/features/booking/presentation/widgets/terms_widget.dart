@@ -67,6 +67,12 @@ class _TermsWidgetState extends State<TermsWidget> {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Checkbox(
                     value: isChecked,
+                    side: BorderSide(
+                      color: field.hasError
+                          ? Theme.of(context).colorScheme.error
+                          : Theme.of(context).colorScheme.primary,
+                      width: field.hasError ? 1 : 1.5,
+                    ),
                     onChanged: (value) {
                       setState(() {
                         isChecked = value ?? false;
@@ -74,14 +80,12 @@ class _TermsWidgetState extends State<TermsWidget> {
                     },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadiusGeometry.circular(4),
-                      side: BorderSide(
-                        color: field.hasError
-                            ? Theme.of(field.context).colorScheme.error
-                            : Theme.of(field.context).colorScheme.primary,
-                      ),
                     ),
                     activeColor: Theme.of(context).colorScheme.primary,
-                    visualDensity: const VisualDensity(horizontal: -4,vertical: -4),
+                    visualDensity: const VisualDensity(
+                      horizontal: -4,
+                      vertical: -4,
+                    ),
                   ),
                 ),
               ],
@@ -90,7 +94,7 @@ class _TermsWidgetState extends State<TermsWidget> {
               Padding(
                 padding: const EdgeInsets.only(right: 12),
                 child: Text(
-                  field.errorText ?? "",    
+                  field.errorText ?? "",
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.error,
                     fontSize: 12,
