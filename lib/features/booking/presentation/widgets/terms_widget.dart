@@ -3,8 +3,15 @@ import 'package:flutter/material.dart';
 class TermsWidget extends StatefulWidget {
   static final GlobalKey<_TermsWidgetState> termsKey =
       GlobalKey<_TermsWidgetState>();
-
-  TermsWidget({Key? key}) : super(key: termsKey);
+  final bool initialValue;
+  final FormFieldValidator<bool>? validator;
+  final FormFieldSetter<bool>? onSaved;
+  TermsWidget({
+    Key? key,
+    required this.initialValue,
+    this.validator,
+    this.onSaved,
+  }) : super(key: termsKey);
 
   @override
   State<TermsWidget> createState() => _TermsWidgetState();
@@ -21,47 +28,78 @@ class _TermsWidgetState extends State<TermsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        GestureDetector(
-          onTap: () {
-            _showTermsDialog(context);
-          },
-          child: RichText(
-            textDirection: TextDirection.rtl,
-            text: TextSpan(
-              style: Theme.of(
-                context,
-              ).textTheme.bodyMedium?.copyWith(color: Colors.grey.shade700),
+    return FormField<bool>(
+      initialValue: widget.initialValue,
+      validator: widget.validator,
+      onSaved: widget.onSaved,
+      builder: (FormFieldState<bool> field) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const TextSpan(text: "قوانین و مقررات برنامه"),
-                TextSpan(
-                  text: " هتلینو ",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Theme.of(context).colorScheme.primary,
+                GestureDetector(
+                  onTap: () {
+                    _showTermsDialog(context);
+                  },
+                  child: RichText(
+                    textDirection: TextDirection.rtl,
+                    text: TextSpan(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.grey.shade700,
+                      ),
+                      children: [
+                        const TextSpan(text: "قوانین و مقررات برنامه"),
+                        TextSpan(
+                          text: " هتلینو ",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                        const TextSpan(text: "را خوانده و آنهارا میپذیرم"),
+                      ],
+                    ),
                   ),
                 ),
-                const TextSpan(text: "را خوانده و آنهارا میپذیرم"),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Checkbox(
+                    value: isChecked,
+                    onChanged: (value) {
+                      setState(() {
+                        isChecked = value ?? false;
+                      });
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(4),
+                      side: BorderSide(
+                        color: field.hasError
+                            ? Theme.of(field.context).colorScheme.error
+                            : Theme.of(field.context).colorScheme.primary,
+                      ),
+                    ),
+                    activeColor: Theme.of(context).colorScheme.primary,
+                    visualDensity: const VisualDensity(horizontal: -4,vertical: -4),
+                  ),
+                ),
               ],
             ),
-          ),
-        ),
-        Checkbox(
-          value: isChecked,
-          onChanged: (value) {
-            setState(() {
-              isChecked = value ?? false;
-            });
-          },
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(4),
-          ),
-          activeColor: Theme.of(context).colorScheme.primary,
-          visualDensity: const VisualDensity(horizontal: -4),
-        ),
-      ],
+            if (field.hasError)
+              Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: Text(
+                  field.errorText ?? "",    
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+          ],
+        );
+      },
     );
   }
 
