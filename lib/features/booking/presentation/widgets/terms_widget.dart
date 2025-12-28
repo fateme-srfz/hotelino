@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TermsWidget extends StatefulWidget {
-  const TermsWidget({super.key});
+  static final GlobalKey<_TermsWidgetState> termsKey =
+      GlobalKey<_TermsWidgetState>();
+
+  TermsWidget({Key? key}) : super(key: termsKey);
 
   @override
   State<TermsWidget> createState() => _TermsWidgetState();
@@ -9,6 +12,12 @@ class TermsWidget extends StatefulWidget {
 
 class _TermsWidgetState extends State<TermsWidget> {
   bool isChecked = false;
+
+  resetCheckbox() {
+    setState(() {
+      isChecked = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +59,7 @@ class _TermsWidgetState extends State<TermsWidget> {
             borderRadius: BorderRadiusGeometry.circular(4),
           ),
           activeColor: Theme.of(context).colorScheme.primary,
+          visualDensity: const VisualDensity(horizontal: -4),
         ),
       ],
     );
@@ -66,14 +76,17 @@ class _TermsWidgetState extends State<TermsWidget> {
             children: [
               Text(
                 'قوانین برنامه هتلینو',
-                style: Theme.of(context).textTheme.displayMedium,),
-                const SizedBox(height: 16,),
-                Text( "هتلینو یکی از برنامه‌های معتبر از دوره‌ی یاقوت فلاتر است که توسط پیج دانیجت و با تدریس امیرحسین محمدی طراحی و توسعه یافته است. این برنامه به شما این امکان را می‌دهد تا به راحتی هتل‌های مختلف را در کشورهای گوناگون جستجو کرده و رزرو کنید\n\n"
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                "هتلینو یکی از برنامه‌های معتبر از دوره‌ی یاقوت فلاتر است که توسط پیج دانیجت و با تدریس امیرحسین محمدی طراحی و توسعه یافته است. این برنامه به شما این امکان را می‌دهد تا به راحتی هتل‌های مختلف را در کشورهای گوناگون جستجو کرده و رزرو کنید\n\n"
                 "شما قادر خواهید بود پروفایل شخصی خود را ایجاد کنید و هتل‌هایی که به نیازهای شما نزدیک‌تر هستند را پیدا کنید. توجه داشته باشید که هتل‌های رزرو شده قابل لغو نبوده و پس از انجام رزرو، تغییرات در این زمینه امکان‌پذیر نمی‌باشد\n\n"
                 "قیمت‌های هتل‌ها به صورت مقطوع اعلام شده‌اند و هیچ‌گونه تغییر قیمتی پس از رزرو نخواهید داشت. همچنین، اطلاعات هتل‌ها به دقت بررسی و به روزرسانی می‌شوند تا شما تجربه‌ای رضایت‌بخش از اقامت خود داشته باشید",
                 textAlign: TextAlign.justify,
                 textDirection: TextDirection.rtl,
-                style: Theme.of(context).textTheme.bodyMedium ,),
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
             ],
           ),
         );

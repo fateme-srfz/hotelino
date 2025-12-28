@@ -20,6 +20,7 @@ class _BookingScreenState extends State<BookingScreen> {
   void resetForm() {
     Future.delayed(const Duration(milliseconds: 100), () {
       _formKey.currentState?.reset();
+      TermsWidget.termsKey.currentState?.resetCheckbox();
       setState(() {});
     });
   }
