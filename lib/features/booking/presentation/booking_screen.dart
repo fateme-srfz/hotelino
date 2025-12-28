@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BookingScreen extends StatefulWidget {
-  static final GlobalKey<_BookingScreenState> bookingScreenKey = GlobalKey<_BookingScreenState>();
-  BookingScreen({Key? key}):super(key: bookingScreenKey);
+  static final GlobalKey<_BookingScreenState> bookingScreenKey =
+      GlobalKey<_BookingScreenState>();
+  BookingScreen({Key? key}) : super(key: bookingScreenKey);
 
   @override
   State<BookingScreen> createState() => _BookingScreenState();
@@ -132,6 +133,22 @@ class _BookingScreenState extends State<BookingScreen> {
                       },
                     ),
                     TermsWidget(),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            ScaffoldMessenger.of(
+                              context,
+                            ).showSnackBar(
+                              const SnackBar(
+                                content: 
+                                Text('درخواست رزرو با موفقیت ثبت شد🎉',textDirection: TextDirection.rtl,)));
+                          }
+                        },
+                        child: const Text('جستجو هتل ها'),
+                      ),
+                    ),
                   ],
                 ),
               );
