@@ -1,4 +1,5 @@
 import 'package:Hotelino/core/constants/constants.dart';
+import 'package:Hotelino/core/utils/keyboard.dart';
 import 'package:flutter/material.dart';
 
 class TermsWidget extends StatefulWidget {
@@ -125,6 +126,7 @@ class _TermsWidgetState extends State<TermsWidget> {
   }
 
   void _showTermsDialog(BuildContext context) {
+    unfocusEditors(context);
     showModalBottomSheet(
       context: context,
       builder: (context) {
