@@ -132,18 +132,30 @@ class _BookingScreenState extends State<BookingScreen> {
                         }
                       },
                     ),
-                    TermsWidget(),
+                    TermsWidget(
+                      initialValue: false,
+                      validator: (value) {
+                        if (value == null || value == false) {
+                          return "لطفا قوانین را تایید کنید";
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) {},
+                    ),
+                    const SizedBox(height: 8,),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            ScaffoldMessenger.of(
-                              context,
-                            ).showSnackBar(
+                            ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: 
-                                Text('درخواست رزرو با موفقیت ثبت شد🎉',textDirection: TextDirection.rtl,)));
+                                content: Text(
+                                  'درخواست رزرو با موفقیت ثبت شد🎉',
+                                  textDirection: TextDirection.rtl,
+                                ),
+                              ),
+                            );
                           }
                         },
                         child: const Text('جستجو هتل ها'),
