@@ -30,7 +30,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void _showSnackbar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message, textDirection: TextDirection.rtl)),
+      SnackBar(
+        content: Text(message, textDirection: TextDirection.rtl),
+
+        behavior: SnackBarBehavior.floating,
+        elevation: 3,
+        duration: const Duration(seconds: 2),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      ),
     );
   }
 
