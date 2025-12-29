@@ -22,6 +22,7 @@ class _BookingScreenState extends State<BookingScreen> {
     Future.delayed(const Duration(milliseconds: 100), () {
       _formKey.currentState?.reset();
       TermsWidget.termsKey.currentState?.resetCheckbox();
+      NumberFormField.numberFieldKey.currentState?.resetEnteredNumber();
       setState(() {});
     });
   }
@@ -142,7 +143,7 @@ class _BookingScreenState extends State<BookingScreen> {
                       },
                       onSaved: (newValue) {},
                     ),
-                    const SizedBox(height: 8,),
+                    const SizedBox(height: 8),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
