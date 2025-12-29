@@ -3,7 +3,7 @@ import 'package:Hotelino/core/utils/keyboard.dart';
 import 'package:Hotelino/features/booking/presentation/booking_screen.dart';
 import 'package:Hotelino/features/favorite/presentation/favorite_screen.dart';
 import 'package:Hotelino/features/home/presentation/home_screen.dart';
-import 'package:Hotelino/routes/test.dart';
+import 'package:Hotelino/features/profile/presentation/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -30,7 +30,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
       const HomeScreen(), 
       const FavoriteScreen(), 
       BookingScreen(), 
-      const ProfliePage()];
+      const ProfileScreen()];
   }
 
   List<PersistentBottomNavBarItem> _navBarItems() {
