@@ -48,8 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         radius: 55,
                         backgroundImage: _image != null
                             ? FileImage(_image!)
-                            : NetworkImage(profile.avatarUrl)
-                                  as ImageProvider,
+                            : NetworkImage(profile.avatarUrl) as ImageProvider,
                       ),
                       Positioned(
                         right: 0,
@@ -59,9 +58,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Container(
                             padding: const EdgeInsetsDirectional.all(6),
                             decoration: BoxDecoration(
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.primaryFixed,
+                              color: Theme.of(context).colorScheme.primaryFixed,
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
@@ -74,6 +71,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 12),
+                  Text(
+                    profile.name,
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    profile.email,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.headlineSmall!.copyWith(color: Colors.grey),
+                  ),
+                  const SizedBox(height: 24,),
+                   
+
                 ],
               ),
             ),
