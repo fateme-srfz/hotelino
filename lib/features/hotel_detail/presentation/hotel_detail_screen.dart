@@ -94,60 +94,97 @@ class HotelDetailScreen extends StatelessWidget {
                       const SizedBox(height: 8),
                       Wrap(
                         spacing: 14,
-                        children: 
-                          hotel.amenities.map((a) {
-                            IconData icon;
+                        children: hotel.amenities.map((a) {
+                          IconData icon;
 
-                            switch (a) {
-                              case 'ساحل':
-                                icon = Icons.beach_access;
-                                break;
+                          switch (a) {
+                            case 'ساحل':
+                              icon = Icons.beach_access;
+                              break;
 
-                              case 'استخر':
-                                icon = Icons.pool;
-                                break;
+                            case 'استخر':
+                              icon = Icons.pool;
+                              break;
 
-                              case 'باشگاه':
-                                icon = Icons.fitness_center;
-                                break;
+                            case 'باشگاه':
+                              icon = Icons.fitness_center;
+                              break;
 
-                              case 'کافه':
-                                icon = Icons.restaurant;
-                                break;
+                            case 'کافه':
+                              icon = Icons.restaurant;
+                              break;
 
-                              case 'رستوران':
-                                icon = Icons.restaurant;
-                                break;
+                            case 'رستوران':
+                              icon = Icons.restaurant;
+                              break;
 
-                              case 'کولر':
-                                icon = Icons.ac_unit;
-                                break;
+                            case 'کولر':
+                              icon = Icons.ac_unit;
+                              break;
 
-                              default:
-                                icon = Icons.check_circle_outline;
-                            }
+                            default:
+                              icon = Icons.check_circle_outline;
+                          }
 
-                            return Column(
-                              mainAxisSize: MainAxisSize.min,
+                          return Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(12),
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: Icon(icon, size: 30, color: Colors.grey),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                a,
+                                style: textTheme.bodySmall!.copyWith(
+                                  color: Colors.black87,
+                                ),
+                                textDirection: TextDirection.rtl,
+                              ),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        "گالری تصاویر",
+                        style: textTheme.headlineSmall,
+                        textDirection: TextDirection.rtl,
+                      ),
+                      const SizedBox(height: 8),
+                      SizedBox(
+                        height: 100,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          reverse: true,
+                          itemCount: hotel.images.length,
+                          itemBuilder: (context, index) {
+                            return Row(
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.all(12),
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey.shade200,
-                                    borderRadius: BorderRadius.circular(16),
-                                  ),
-                                  child: Icon(
-                                    icon,
-                                    size: 30,
-                                    color: Colors.grey,
+                                GestureDetector(
+                                  onTap: () {
+                                    
+                                  },
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Image.network(
+                                      networkUrl(hotel.images[index]),
+                                      width: 120,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
-                                const SizedBox(height: 6,),
-                                Text(a,style: textTheme.bodySmall!.copyWith(color: Colors.black87),
-                                textDirection: TextDirection.rtl,)
+
+                                if (index != 0) const SizedBox(width: 8),
                               ],
                             );
-                          }).toList(),
+                          },
+                        ),
                       ),
                     ],
                   ),
