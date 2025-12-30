@@ -166,9 +166,7 @@ class HotelDetailScreen extends StatelessWidget {
                             return Row(
                               children: [
                                 GestureDetector(
-                                  onTap: () {
-                                    
-                                  },
+                                  onTap: () {},
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(12),
                                     child: Image.network(
@@ -185,6 +183,20 @@ class HotelDetailScreen extends StatelessWidget {
                             );
                           },
                         ),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'توضیحات',
+                        style: textTheme.headlineSmall,
+                        textDirection: TextDirection.rtl,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        hotel.description,
+                        style: textTheme.bodyMedium!.copyWith(height: 1.5),
+                        textDirection: TextDirection.rtl,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 4,
                       ),
                     ],
                   ),
