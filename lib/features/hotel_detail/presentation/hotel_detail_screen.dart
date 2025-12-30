@@ -1,3 +1,4 @@
+import 'package:Hotelino/core/utils/network.dart';
 import 'package:Hotelino/features/home/data/models/hotel.dart';
 import 'package:Hotelino/features/home/data/repositories/hotel_repository.dart';
 import 'package:Hotelino/shared/services/json_data_service.dart';
@@ -24,7 +25,18 @@ class HotelDetailScreen extends StatelessWidget {
         return Scaffold(
           body: CustomScrollView(
             slivers: [
-              
+              SliverAppBar(
+                floating: true,
+                pinned: false,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: GestureDetector(
+                    onLongPress: () {
+                      
+                    },
+                    child: Image.network(networkUrl(hotel.images.first),fit: BoxFit.cover,),
+                  ),
+                ),
+              )
             ],
           ),
         );
