@@ -3,6 +3,7 @@ import 'package:Hotelino/features/home/data/models/hotel.dart';
 import 'package:Hotelino/features/home/data/repositories/hotel_repository.dart';
 import 'package:Hotelino/shared/services/json_data_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class HotelDetailScreen extends StatelessWidget {
@@ -198,6 +199,28 @@ class HotelDetailScreen extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 4,
                       ),
+                      const SizedBox(height: 16),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              //full screen map
+                            },
+                            child: const Text(
+                              'تمام صفحه',
+                              textDirection: TextDirection.rtl,
+                            ),
+                          ),
+                          Text(
+                            'موقعیت مکانی هتل روی نقشه',
+                            style: textTheme.headlineSmall,
+                            textDirection: TextDirection.rtl,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      
                     ],
                   ),
                 ),
