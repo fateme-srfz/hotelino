@@ -4,6 +4,7 @@ import 'package:Hotelino/features/home/data/repositories/hotel_repository.dart';
 import 'package:Hotelino/shared/services/json_data_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class HotelDetailScreen extends StatelessWidget {
@@ -220,7 +221,72 @@ class HotelDetailScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 8),
-                      
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: 200,
+                          child: FlutterMap(
+                            options: MapOptions(
+                              initialZoom: 15.0,
+                              initialCenter: LatLng(
+                                hotel.location.latitude,
+                                hotel.location.longitude,
+                              ),
+                              interactionOptions: const InteractionOptions(
+                                flags:
+                                    InteractiveFlag.all &
+                                    ~InteractiveFlag.rotate,
+                              ),
+                            ),
+                            children: [
+                              TileLayer(
+                                urlTemplate:
+                                    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                userAgentPackageName: 'ir.dunijet.Hotelino',
+                              ),
+                              MarkerLayer(
+                                markers: [
+                                  Marker(
+                                    point: LatLng(
+                                      hotel.location.latitude,
+                                      hotel.location.longitude,
+                                    ),
+                                    width: 80,
+                                    height: 80,
+                                    child: Column(
+                                      children: [
+                                        const Icon(
+                                          Icons.location_pin,
+                                          color: Colors.red,
+                                          size: 40,
+                                        ),
+                                        Container(
+                                          color: Colors.white.withOpacity(0.8),
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 4,
+                                            vertical: 2,
+                                          ),
+                                          child: Text(
+                                            hotel.name,
+                                            textDirection: TextDirection.rtl,
+                                            textAlign: TextAlign.center,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: textTheme.bodySmall!
+                                                .copyWith(color: Colors.black),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 0),
                     ],
                   ),
                 ),
