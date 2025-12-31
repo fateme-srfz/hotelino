@@ -1,6 +1,7 @@
 import 'package:Hotelino/core/utils/network.dart';
 import 'package:Hotelino/features/home/data/models/hotel.dart';
 import 'package:Hotelino/features/home/data/repositories/hotel_repository.dart';
+import 'package:Hotelino/features/hotel_detail/presentation/full_screen_map.dart';
 import 'package:Hotelino/shared/services/json_data_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -206,7 +207,17 @@ class HotelDetailScreen extends StatelessWidget {
                         children: [
                           TextButton(
                             onPressed: () {
-                              //full screen map
+                              PersistentNavBarNavigator.pushNewScreen(
+                                context,
+                                screen: FullScreenMap(
+                                  latitude: hotel.location.latitude,
+                                  longitude: hotel.location.longitude,
+                                  hotelName: hotel.name,
+                                ),
+                                withNavBar: false,
+                                pageTransitionAnimation:
+                                    PageTransitionAnimation.cupertino,
+                              );
                             },
                             child: const Text(
                               'تمام صفحه',
