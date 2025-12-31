@@ -1,6 +1,7 @@
 import 'package:Hotelino/core/utils/network.dart';
 import 'package:Hotelino/features/home/data/models/hotel.dart';
 import 'package:Hotelino/features/home/data/repositories/hotel_repository.dart';
+import 'package:Hotelino/features/hotel_detail/presentation/full_screen_image_shower.dart';
 import 'package:Hotelino/features/hotel_detail/presentation/full_screen_map.dart';
 import 'package:Hotelino/shared/services/json_data_service.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,17 @@ class HotelDetailScreen extends StatelessWidget {
                 pinned: false,
                 flexibleSpace: FlexibleSpaceBar(
                   background: GestureDetector(
-                    onLongPress: () {},
+                    onLongPress: () {
+                      PersistentNavBarNavigator.pushNewScreen(
+                        context,
+                        screen: FullScreenImageShower(
+                          myImageUrl: hotel.images.first,
+                        ),
+                        withNavBar: false,
+                        pageTransitionAnimation:
+                            PageTransitionAnimation.cupertino,
+                      );
+                    },
                     child: Image.network(
                       networkUrl(hotel.images.first),
                       fit: BoxFit.cover,
@@ -169,7 +180,17 @@ class HotelDetailScreen extends StatelessWidget {
                             return Row(
                               children: [
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    PersistentNavBarNavigator.pushNewScreen(
+                                      context,
+                                      screen: FullScreenImageShower(
+                                        myImageUrl: hotel.images[index],
+                                      ),
+                                      withNavBar: false,
+                                      pageTransitionAnimation:
+                                          PageTransitionAnimation.cupertino,
+                                    );
+                                  },
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(12),
                                     child: Image.network(
